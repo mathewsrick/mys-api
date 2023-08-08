@@ -1,6 +1,7 @@
 <?php
 
-use App\Http\Controllers\API\AuthController;;
+use App\Http\Controllers\API\AuthController;
+use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,5 +26,7 @@ Route::middleware('auth:sanctum')->group(function() {
     Route::resource('user', UserController::class)->only([
         'show', 'update' 
     ]);
+
+    Route::resource('products', ProductController::class)->only(['index', 'show']);
 
 });
