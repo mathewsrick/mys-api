@@ -18,6 +18,7 @@ return new class extends Migration
             $table->text('image')->nullable();
             $table->integer('price');
             $table->integer('price_to_suggest')->default(0);
+            $table->float('discount')->default(0);
             $table->integer('availability')->default(0);
             
             $table->timestamps();
