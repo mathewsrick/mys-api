@@ -6,26 +6,38 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\Auth\LoginRequest;
 use App\Http\Requests\Auth\LogoutRequest;
 use App\Http\Requests\Auth\RegisterRequest;
+use App\Models\Address;
 use App\Models\User;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
     public function register(RegisterRequest $request) {
         try {
-            $user = User::create([
-                'first_name' => $request->input('first_name'),
-                'last_name' => $request->input('last_name'),
-                'email' => $request->input('email'),
-                'phone_number' => $request->input('phone_number'),
-                'address' => $request->input('address'),
-                'password' =>  Hash::make($request->input('password'))
-            ]);
-    
-            $token = $user->createToken('user_token')->plainTextToken;
-    
-            return response()->json(['user' => $user,'token' => $token], 200);
+            $user = null;
+            $token = null;
+
+            DB::transaction(function() use ($request, &$user, &$token) {
+                $user = User::create([
+                    'first_name' => $request->input('first_name'),
+                    'last_name' => $request->input('last_name'),
+                    'email' => $request->input('email'),
+                    'phone_number' => $request->input('phone_number'),
+                    // 'address' => $request->input('address'),
+                    'password' =>  Hash::make($request->input('password'))
+                ]);
+
+                Address::create([
+                    'address' => $request->input('address'),
+                    'default' => true,
+                    'user_id' => $user->id,
+                ]);
+
+                $token = $user->createToken('user_token')->plainTextToken;
+            });            
             
+            return response()->json(['user' => $user,'token' => $token], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'error' => $e->getMessage(),
