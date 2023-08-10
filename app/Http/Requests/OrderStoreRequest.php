@@ -17,15 +17,15 @@ class OrderStoreRequest extends FormRequest
             'products' => 'required|array',
             'products.*.qty' => 'required|integer|min:10',
             'products.*.unit_price' => 'required|integer',
-            'products.*.discount' => 'required|float',
+            'products.*.discount' => 'required|numeric',
             'products.*.product_id' => 'required|exists:products,id',
             
-            'delivered_date' => 'date',
+            'delivery_date' => 'date',
             'payment_method' => 'required|string|in:ON_DELIVERY,ONLINE',
             'payment_type' => 'required|string|in:CASH,TRANSFER,NEQUI',
-            'amount' => 'required|float',
+            'amount' => 'required|numeric',
             'address_id' => 'required|exists:address,id',
-            'user_id' => 'required|exists:user,id',
+            'user_id' => 'required|exists:users,id',
         ];
     }
 }
