@@ -17,15 +17,7 @@ class OrdersController extends Controller
     {
         try {
             $ordersPerPage = 10;
-            $orders = Orders::with('products')
-                ->with(['user' => function($q) {
-                    $q->select('id', 'first_name', 'last_name', 'email', 'phone_number', 'image');
-                }])
-                ->with(['address' => function($q) {
-                    $q->select('id', 'address');
-                }])
-                ->orderBy('created_at', 'desc')
-                ->simplePaginate($ordersPerPage);
+            $orders = Orders::with('products')->orderBy('created_at', 'desc')->simplePaginate($ordersPerPage);
             
             $pageCount = count(Orders::all()) / $ordersPerPage;
 
