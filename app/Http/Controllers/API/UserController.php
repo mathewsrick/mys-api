@@ -32,7 +32,10 @@ class UserController extends Controller
     public function show(string $id): Object
     {
         try {
-            $user = User::findOrFail($id);
+            $user = User::with(['directory' => function($q) {
+                $q->where('default', true);
+            }])->where('id', $id)->firstOrFail();
+
             return response()->json(['user' => $user], 200);
         } catch (\Exception $e) {
             return response()->json([

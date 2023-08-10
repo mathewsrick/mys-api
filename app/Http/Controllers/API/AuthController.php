@@ -48,7 +48,9 @@ class AuthController extends Controller
 
     public function login(LoginRequest $request) {
         try {
-            $user = User::where('email', $request->input('email'))->firstOrfail();
+            $user = User::with(['directory' => function($q) {
+                $q->where('default', true);
+            }])->where('email', $request->input('email'))->firstOrfail();
 
             if(Hash::check($request->input('password'), $user->password)) {
                 $token = $user->createToken('user_token')->plainTextToken;
