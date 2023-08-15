@@ -22,8 +22,9 @@ class LoginRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'email.required' => 'El campo email es requerido',
+            'email.email' => 'El campo email es requerido',
             'password.required' => 'El campo contraseña es requerido',
+            'password.min' => 'El campo contraseña debe contener al menos 6 caracteres',
         ];
     }
 }

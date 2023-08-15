@@ -57,7 +57,7 @@ class AuthController extends Controller
                 return response()->json(['user' => $user,'token' => $token], 200);
             }
 
-            return response()->json(['error' => 'Something went wrong in the login']);
+            return response()->json(['error' => 'El correo o la contraseña son incorrectos']);
 
         } catch (\Exception $e) {
             return response()->json([
