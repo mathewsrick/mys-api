@@ -17,15 +17,29 @@ class ProductsSeeder extends Seeder
             [
                 'name' => 'Tequeños',
                 'description' => 'Exquisitos palitos rellenos de mucho queso',
-                'price' => 950,
+                'price' => 1200,
                 'image' => 'palitos.png',
-                'discount' => 5,
+                'discount' => 0,
             ],
             [
                 'name' => 'Tequeyoyos',
                 'description' => 'Delicioso y unico relleno de maduro jamón y abundante queso',
-                'price' => 2450,
+                'price' => 3000,
                 'image' => 'Tequeyoyos.jpg',
+                'discount' => 0,
+            ],
+            [
+                'name' => 'Tequeños Congelados',
+                'description' => 'Exquisitos palitos rellenos de mucho queso',
+                'price' => 950,
+                'image' => 'teque_mantel.png',
+                'discount' => 5,
+            ],
+            [
+                'name' => 'Tequeyoyos Congelados',
+                'description' => 'Delicioso y unico relleno de maduro jamón y abundante queso',
+                'price' => 2500,
+                'image' => 'yoyo_mantel.png',
                 'discount' => 8,
             ],
             [
