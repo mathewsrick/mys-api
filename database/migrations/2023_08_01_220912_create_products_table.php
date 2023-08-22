@@ -11,6 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+        });
+
         Schema::create('products', function (Blueprint $table) {
             $table->id();
             $table->string('name');
@@ -20,6 +25,9 @@ return new class extends Migration
             $table->integer('price_to_suggest')->default(0);
             $table->float('discount')->default(0);
             $table->integer('availability')->default(0);
+
+            $table->bigInteger('category_id')->unsigned();
+            $table->foreign('category_id')->references('id')->on('categories');
             
             $table->timestamps();
         });

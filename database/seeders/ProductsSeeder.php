@@ -20,6 +20,23 @@ class ProductsSeeder extends Seeder
                 'price' => 1200,
                 'image' => 'palitos.png',
                 'discount' => 0,
+                'category_id' => 2,
+            ],
+            [
+                'name' => 'Mini Tequeños',
+                'description' => 'Una delicia en tamaño miniatura, no podras parar de comerlos',
+                'price' => 700,
+                'image' => 'mini_teque.jpg',
+                'discount' => 0,
+                'category_id' => 2,
+            ],
+            [
+                'name' => 'Teque Box x 100',
+                'description' => '100 deliciosos tequeños para cualquier tipo de evento. No querras que se acaben',
+                'price' => 100000,
+                'image' => 'teque_box.jpg',
+                'discount' => 0,
+                'category_id' => 2,
             ],
             [
                 'name' => 'Tequeyoyos',
@@ -27,6 +44,7 @@ class ProductsSeeder extends Seeder
                 'price' => 3000,
                 'image' => 'Tequeyoyos.jpg',
                 'discount' => 0,
+                'category_id' => 2,
             ],
             [
                 'name' => 'Tequeños Congelados',
@@ -34,6 +52,7 @@ class ProductsSeeder extends Seeder
                 'price' => 950,
                 'image' => 'teque_mantel.png',
                 'discount' => 5,
+                'category_id' => 1,
             ],
             [
                 'name' => 'Tequeyoyos Congelados',
@@ -41,6 +60,7 @@ class ProductsSeeder extends Seeder
                 'price' => 2500,
                 'image' => 'yoyo_mantel.png',
                 'discount' => 8,
+                'category_id' => 1,
             ],
             [
                 'name' => 'Pastelito de choriqueso',
@@ -48,6 +68,7 @@ class ProductsSeeder extends Seeder
                 'price' => 1600,
                 'image' => null,
                 'discount' => 0,
+                'category_id' => 2,
             ],
         ];
 

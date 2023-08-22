@@ -15,7 +15,7 @@ class ProductController extends Controller
     {
         try {
             $productPerPage = 10;
-            $product = Product::paginate($productPerPage);
+            $product = Product::with('category')->paginate($productPerPage);
             $pageCount = count(Product::all()) / $productPerPage;
 
             return response()->json([
