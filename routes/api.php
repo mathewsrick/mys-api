@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\AddressController;
 use App\Http\Controllers\API\AuthController;
 use App\Http\Controllers\API\ProductController;
 use App\Http\Controllers\API\UserController;
@@ -28,4 +29,9 @@ Route::middleware('auth:sanctum')->group(function() {
 
     Route::resource('products', ProductController::class)->only(['index', 'show']);
     Route::resource('orders', OrdersController::class)->only(['index', 'store']);
+
+    Route::get('user/{id}/addresses', [AddressController::class, 'index']);
+    Route::post('user/{id}/addresses', [AddressController::class, 'store']);
+    Route::put('user/{user_id}/addresses/{address_id}', [AddressController::class, 'update']);
+    Route::delete('user/{user_id}/addresses/{address_id}', [AddressController::class, 'destroy']);
 });

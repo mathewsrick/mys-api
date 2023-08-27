@@ -25,7 +25,7 @@ class OrdersController extends Controller
             return response()->json([
                 'paginate' => $orders,
                 'page_count' =>ceil($pageCount),
-            ]);
+            ], 200);
         } catch (\Exception $e) {
             return response()->json([
                 'message' => 'Something went wrong in OrderController.order',
