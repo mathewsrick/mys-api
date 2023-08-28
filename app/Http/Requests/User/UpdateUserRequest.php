@@ -14,8 +14,14 @@ class UpdateUserRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'first_name' => 'required|string|min:3',
-            'last_name' => 'required|string|min:3'
+            'phone_number' => 'required|max:10',
+        ];
+    }
+
+    public function messages(): array
+    {
+        return [
+            'phone_number.max' => 'El numero debe ser de maximo 10 digitos',
         ];
     }
 }

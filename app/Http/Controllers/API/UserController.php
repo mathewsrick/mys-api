@@ -45,21 +45,21 @@ class UserController extends Controller
         try {
             $user = User::findOrFail($id);
 
-            if($request->hasFile('image')) {
-                (new ImageService)->updateImage($user, $request, '/images/users/', 'update');
-            }
+            // if($request->hasFile('image')) {
+            //     (new ImageService)->updateImage($user, $request, '/images/users/', 'update');
+            // }
 
-            $user->first_name = $request->first_name;
-            $user->last_name = $request->last_name;
-            $user->location = $request->location;
-            $user->description = $request->description;
+            $user->phone_number = $request->phone_number;
+            // $user->last_name = $request->last_name;
+            // $user->location = $request->location;
+            // $user->description = $request->description;
 
             $user->save();
 
             return response()->json(['User details update'], 200);
         } catch (\Exception $e) {
             return response()->json([
-                'message' => 'Something went wrong in UserController.show',
+                'message' => 'Something went wrong in UserController.update',
                 'error' => $e->getMessage()
             ], 400);
         }
